@@ -19,7 +19,7 @@ export async function postTransactionRequest(content: Record<string, any>): Prom
     if (!response.ok) {
         const errorResponse: ErrorResponse = await response.json()
         console.error(
-            `Failed to send request --> ${response.status} - ${response.statusText} - ${}`
+            `Failed to send request --> ${response.status} - ${response.statusText} - ${errorResponse}`
         )
         return { error: errorResponse.error.description }
     }
