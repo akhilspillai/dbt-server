@@ -24,12 +24,4 @@ jobs:
             echo "PR title does not contain the jira ticket reference"
             exit 1
           fi
-  ci:
-    if: ${{ !github.event.pull_request.action != 'edited') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
 
