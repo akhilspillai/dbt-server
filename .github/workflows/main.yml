@@ -23,7 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v1
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo ${{ github.event.number }}
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+      # This will echo "Your PR is 7", or be skipped if there is no current PR.
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
 
