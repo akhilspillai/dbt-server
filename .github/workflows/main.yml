@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Check PR title
-        if: ${{ !contains(github.event.pull_request.title, '[BTW-]') }}
+        if: ${{ !contains(github.event.pull_request.title, 'BTW-') }}
         run: |
           echo "PR title does not contain the jira ticket reference"
           exit 1
