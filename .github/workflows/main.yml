@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Check PR title
         run: |
-          if ! [[ ${{ github.event.pull_request.title }} =~ BTW-[[:digit:]]+ ]]; then
+          if ! [[ ${{ github.event.pull_request.title }} =~ "BTW-[[:digit:]]+" ]]; then
             echo "PR title does not contain the jira ticket reference"
             exit 1
           fi
