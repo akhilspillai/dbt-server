@@ -23,8 +23,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v1
-      - name: print event type
-        run: echo ${{ github.event.type }}
-      - name: print payload
-        run: echo ${{ github.event.payload }}
+      - name: print event
+        run: echo ${{ toJson(github.event) }}
 
