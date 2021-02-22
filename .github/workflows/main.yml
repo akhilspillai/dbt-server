@@ -19,9 +19,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Check PR title
+        if: ${{ !contains(github.event.pull_request.title, '[BTW-]') }}
         run: |
-          if ! [[ ${{ github.event.pull_request.title }} =~ "BTW-[[:digit:]]+" ]]; then
-            echo "PR title does not contain the jira ticket reference"
-            exit 1
-          fi
+          echo "PR title does not contain the jira ticket reference"
+          exit 1
+  ci:
+    if: "!contains(github.event.head_commit.message, '[skip ci]' && github.event.pull_request.action != 'edited'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
